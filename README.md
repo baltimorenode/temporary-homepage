@@ -3,7 +3,7 @@ How do I undo this?
 1. Revert NGINX config by removing this from `/etc/nginx/sites-available/www.baltimorenode.org`:
     ```
     location = / {
-        index non-wp-index.html;
+        proxy_pass https://baltimorenode.github.io/temporary-homepage/;
     }
     ```
 1. Remove WordPress hack:
