@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<!-- jnm slapped this together 20200325 -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Baltimore Node | baltimore&#039;s makerspace for hackers, makers, diy and crafters</title>
+    <link href="https://fonts.googleapis.com/css?family=Yellowtail&amp;text=The+Virtual" rel="stylesheet">
+    <!-- neon text credit: https://codepen.io/erikjung/full/XdWEKE -->
+    <style>
+    html {
+        background: #000000;
+        color: white;
+    }
+
+    x-sign {
+        --interval: 1s;
+        display: block;
+        text-shadow:
+            0 0 10px var(--color1),
+            0 0 20px var(--color2),
+            0 0 40px var(--color3),
+            0 0 80px var(--color4);
+        will-change: filter, color;
+        filter: saturate(60%);
+        animation: flicker steps(100) var(--interval) 1s infinite;
+    }
+
+    x-sign {
+        color: tomato;
+        --color1: orangered;
+        --color2: firebrick;
+        --color3: maroon;
+        --color4: darkred;
+        font-family: Yellowtail;
+    }
+
+    @keyframes flicker {
+        50% {
+            color: white;
+            filter: saturate(200%) hue-rotate(20deg);
+        }
+    }
+    </style>
+    <style>
+    #virtual-neon {
+        position: absolute;
+        transform: rotate(-35deg);
+        margin-top: 1em;
+        font-size: 2em;
+    }
+
+    #logo {
+        width: 13em;
+        margin-left: 4em;
+    }
+
+    #top {
+        display: grid;
+        justify-content: center;
+    }
+
+    #logo-with-neon {
+        margin-left: -4em;
+        margin-bottom: 1em;
+    }
+
+    #stuff {
+        font-family: sans-serif;
+    }
+
+    body {
+        max-width: 75em;
+    }
+
+    a {
+        color: #0892d0;
+    }
+    </style>
+    <script>
+    function discoAddress(box) {
+        return box + "@discuss." + (window.location.hostname[0] === 'w' ? window.location.hostname.substr(4) : window.location.hostname);
+    }
+
+    function rootAddress() {
+        return "root@" + (window.location.hostname[0] === 'w' ? window.location.hostname.substr(4) : window.location.hostname);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="top">
+        <div id="logo-with-neon">
+            <x-sign id="virtual-neon">The Virtual</x-sign>
+            <img src="node-logo-white.png" alt="Baltimore Node" id="logo">
+        </div>
+    </div>
+    <div id="stuff">
+        <img src="makers-unite-nasty-raster.jpg" alt="Makers Unite! Collaborative Emergency Response" style="width: 11em; float: right">
+        <h1>You can help contain COVID-19!</h1>
+        <p>In response to the growing need for personal protective equipment (PPE) for healthcare workers during this time of crisis, <em>We the Builders</em> has launched a collaborative project to manufacture face shields for local hospitals. <strong>Go to <a href="http://mdmakersunite.com">http://mdmakersunite.com/</a> now to join the effort.</strong>
+            <p>
+                <p>If you don&apos;t have the equipment to help make face shields, there&apos;s still lots you can do! Check out <a href="https://www.osibaltimore.org/2020/03/covid-19-information-and-resources/">OSI Baltimore&apos;s list of COVID-19 resources</a>, including multiple &quot;Community-Based Resources&quot; that you can contribute to right away.</p>
+                <h1>Stay home, but stay connected</h1>
+                <p>Our physical space is closed, but our community is not: we&apos;re here to help with your projects or just hang out and shake off those quarantine blues. How? Keep reading…
+                    <h2>For everyone:</h2>
+                    <ul>
+                        <li>❤ Donate to us, either <a href="https://baltimorenode.org/nodeworks/donation.php">once</a> or <a href="https://baltimorenode.org/nodeworks/pay.php">each month</a>&mdash;we are a 501(c)(3) non-profit, run completely by volunteers</li>
+                        <li><strong>Video chat</strong> online now&mdash;no sign-up required: <a href="https://meet.baltimorenode.org/OpenHack">https://meet.baltimorenode.org/OpenHack</a></li>
+                        <li>Join our <strong>Discord</strong> server: <a href="https://discord.gg/GsUkRzH">https://discord.gg/GsUkRzH</a></li>
+                        <li>Join our <strong>public discussion</strong> list: <a href="https://groups.google.com/forum/#!forum/baltimore-node-discussion">https://groups.google.com/forum/#!forum/baltimore-node-discussion</a></li>
+                        <li>Collaborate on <a href="https://wiki.baltimorenode.org/">our <strong>wiki</strong></a></li>
+                        <li>Visit our <a href="https://baltimorenode.org/index.php"><strong>main website</strong> / blog</a>
+                        <li>RSVP to our <em>virtual</em> events on <strong>Meetup</strong>: <a href="https://www.meetup.com/baltimorenode/">https://www.meetup.com/baltimorenode/</a></li>
+                        <li><small>Contact our entire membership: email &quot;inquiries@discuss.&quot; plus the domain name of this website <button onclick="alert(discoAddress('inquiries'))">what?</button></small></li>
+                        <li><small>If <em>and only if</em> your message must be restricted to current and former officers: email &quot;root@&quot; plus the domain name of this website <button onclick="alert(rootAddress())">what?</button></small></li>
+                    </ul>
+                    <h2>For members:</h2>
+                    <ul>
+                        <li>Mailing list / Discourse forum: <a href="https://discuss.baltimorenode.org">https://discuss.baltimorenode.org</a></li>
+                        <ul>
+                            <li>(or just email &quot;members@discuss.&quot; plus the domain name of this website) <button onclick="alert(discoAddress('members'))">what?</button></li>
+                        </ul>
+                        <li>Pay membership dues automatically each month: <a href="https://baltimorenode.org/nodeworks/pay.php">https://baltimorenode.org/nodeworks/pay.php</a></li>
+                    </ul>
+    </div>
+    <script>
+    const signs = document.querySelectorAll('x-sign');
+    const randomIn = (min, max) => (
+        Math.floor(Math.random() * (max - min + 1) + min)
+    )
+
+    const mixupInterval = el => {
+        const ms = randomIn(2000, 4000);
+        el.style.setProperty('--interval', `${ms}ms`);
+    }
+
+    signs.forEach(el => {
+        mixupInterval(el);
+        el.addEventListener('webkitAnimationIteration', () => {
+            mixupInterval(el);
+        });
+    })
+    </script>
+</body>
+
+</html>
